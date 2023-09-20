@@ -7,6 +7,8 @@ interface Props {
 }
 
 function TaskList({ tasks, onChecked }: Props) {
+  if (tasks.length === 0) return <p>No tasks to show.</p>;
+
   return (
     <ul>
       {tasks && tasks.map(task => <TaskItem key={task.id} task={task} onChecked={onChecked} />)}
