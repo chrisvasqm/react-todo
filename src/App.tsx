@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 
 function App() {
   const tasks = [
@@ -7,11 +7,11 @@ function App() {
   ];
 
   return (
-    <>
+    <Container size={['md', 'sm']}>
       <Heading>ToDo App</Heading>
 
       <ul>{tasks && tasks.map(task => <li key={task.id}>{task.name}</li>)}</ul>
-    </>
+    </Container>
   );
 }
 
