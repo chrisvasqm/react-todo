@@ -1,16 +1,31 @@
-import { Container, Heading } from '@chakra-ui/react';
+import { Container, FormControl, HStack, Heading, Button, Input, Stack } from '@chakra-ui/react';
+import data from './data/tasks.json';
+import { useState } from 'react';
 
 function App() {
-  const tasks = [
-    { id: 1, name: 'Task 1', isChecked: false },
-    { id: 2, name: 'Task 2', isChecked: true }
-  ];
+  const [tasks, setTasks] = useState(data);
+
+  function handleSubmit() {
+    console.log('Submit');
+  }
 
   return (
     <Container size={['md', 'sm']}>
-      <Heading>ToDo App</Heading>
+      <Stack spacing={2}>
+        <Heading>ToDo App</Heading>
 
-      <ul>{tasks && tasks.map(task => <li key={task.id}>{task.name}</li>)}</ul>
+        <form onSubmit={handleSubmit}>
+          <HStack>
+            <FormControl>
+              <Input placeholder='Enter task name here' />
+            </FormControl>
+
+            <Button colorScheme='blue'>Add</Button>
+          </HStack>
+        </form>
+
+        <ul>{tasks && tasks.map(task => <li key={task.id}>{task.name}</li>)}</ul>
+      </Stack>
     </Container>
   );
 }
