@@ -1,4 +1,4 @@
-import { Checkbox } from '@chakra-ui/react';
+import { Checkbox, Text } from '@chakra-ui/react';
 import Task from '../models/Task';
 
 interface Props {
@@ -10,7 +10,7 @@ function TaskItem({ task, onChecked }: Props) {
   return (
     <div>
       <Checkbox isChecked={task.isChecked} onChange={() => onChecked(task.id)}>
-        {task.name}
+        <Text as={task.isChecked ? 's' : undefined}>{task.name}</Text>
       </Checkbox>
     </div>
   );
