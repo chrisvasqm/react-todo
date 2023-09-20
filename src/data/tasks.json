@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "Task 1", "isChecked": false },
+  { "id": 2, "name": "Task 2", "isChecked": true }
+]
