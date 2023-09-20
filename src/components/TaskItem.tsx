@@ -1,4 +1,4 @@
-import { Checkbox, HStack } from '@chakra-ui/react';
+import { Checkbox } from '@chakra-ui/react';
 import Task from '../models/Task';
 
 interface Props {
@@ -8,11 +8,11 @@ interface Props {
 
 function TaskItem({ task, onChecked }: Props) {
   return (
-    <HStack>
+    <div>
       <Checkbox isChecked={task.isChecked} onClick={() => onChecked(task.id)}>
         {task.name}
       </Checkbox>
-    </HStack>
+    </div>
   );
 }
 
