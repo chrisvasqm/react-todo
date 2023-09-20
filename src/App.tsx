@@ -5,7 +5,8 @@ import { useState } from 'react';
 function App() {
   const [tasks, setTasks] = useState(data);
 
-  function handleSubmit() {
+  function handleSubmit(e: any) {
+    e.preventDefault();
     console.log('Submit');
   }
 
@@ -20,7 +21,9 @@ function App() {
               <Input placeholder='Enter task name here' />
             </FormControl>
 
-            <Button colorScheme='blue'>Add</Button>
+            <Button colorScheme='blue' type='submit'>
+              Add
+            </Button>
           </HStack>
         </form>
 
