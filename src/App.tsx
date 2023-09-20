@@ -13,6 +13,8 @@ function App() {
   function handleSubmit(e: any) {
     e.preventDefault();
 
+    if (taskName === '') return;
+
     const newTask = {
       id: tasks.length + 1,
       name: taskName,
