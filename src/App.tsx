@@ -4,10 +4,18 @@ import { useState } from 'react';
 
 function App() {
   const [tasks, setTasks] = useState(data);
+  const [taskName, setTaskName] = useState('');
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    console.log('Submit');
+
+    const newTask = {
+      id: tasks.length + 1,
+      name: taskName,
+      isChecked: false
+    };
+
+    setTasks([...tasks, newTask]);
   }
 
   return (
@@ -17,7 +25,7 @@ function App() {
 
         <form onSubmit={handleSubmit}>
           <HStack>
-            <FormControl>
+            <FormControl onChange={e => setTaskName(e.target.value)}>
               <Input placeholder='Enter task name here' />
             </FormControl>
 
