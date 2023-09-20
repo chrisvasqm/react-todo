@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Container, FormControl, HStack, Heading, Button, Input, Stack } from '@chakra-ui/react';
 import data from './data/tasks.json';
 import TaskList from './components/TaskList';
+import Task from './models/Task';
 
 function App() {
-  const [tasks, setTasks] = useState(data);
+  const [tasks, setTasks] = useState<Task[]>(data);
   const [taskName, setTaskName] = useState('');
 
   function handleSubmit(e: any) {
@@ -17,6 +18,18 @@ function App() {
     };
 
     setTasks([...tasks, newTask]);
+  }
+
+  function handleChecked(id: number) {
+    console.log(id);
+    console.log(taskName);
+    setTasks(previousTask =>
+      previousTask.map(task => {
+        if (task.id === id) return { ...task, isChecked: !task.isChecked };
+
+        return task;
+      })
+    );
   }
 
   return (
@@ -36,7 +49,7 @@ function App() {
           </HStack>
         </form>
 
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} onChecked={handleChecked} />
       </Stack>
     </Container>
   );
