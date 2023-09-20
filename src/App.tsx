@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container, FormControl, HStack, Heading, Button, Input, Stack } from '@chakra-ui/react';
 import data from './data/tasks.json';
+import TaskList from './components/TaskList';
 
 function App() {
   const [tasks, setTasks] = useState(data);
@@ -35,7 +36,7 @@ function App() {
           </HStack>
         </form>
 
-        <ul>{tasks && tasks.map(task => <li key={task.id}>{task.name}</li>)}</ul>
+        <TaskList tasks={tasks} />
       </Stack>
     </Container>
   );
