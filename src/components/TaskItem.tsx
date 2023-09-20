@@ -9,7 +9,7 @@ interface Props {
 function TaskItem({ task, onChecked }: Props) {
   return (
     <div>
-      <Checkbox isChecked={task.isChecked} onClick={() => onChecked(task.id)}>
+      <Checkbox isChecked={task.isChecked} onChange={() => onChecked(task.id)}>
         {task.name}
       </Checkbox>
     </div>
